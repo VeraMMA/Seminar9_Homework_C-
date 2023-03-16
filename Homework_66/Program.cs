@@ -1,26 +1,33 @@
-﻿// Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных 
-// элементов в промежутке от M до N.
-// M = 1; N = 15 -> 120
-// M = 4; N = 8. -> 30
-
-static void Print(string word)
+﻿static void Print(string word)
 {
     Console.WriteLine(word);
 }
 
 Print("Найти сумму чисел от M до N.");
+
 Print("Введите число M");
 int numberM = Convert.ToInt32(Console.ReadLine());
-//rint("Введите число N");
-// int numberN = Convert.ToInt32(Console.ReadLine());
- Summa(numberM);
+Print("Введите число N");
+int numberN = Convert.ToInt32(Console.ReadLine());
+Summa(numberM,numberN);
 
-
-static int Summa(int numberM)
+void Summa(int numberM, int numberN)
 {
-    if (numberM <= 8)
-        return 0;
-    int t = 0;
-    return t + Summa(numberM);
-    Console.WriteLine($"Для числа {numberM}\t" + "суммой чисел будет являться\t");
+    Console.Write(SumOfSegment(numberM - 1, numberN));
 }
+
+int SumOfSegment (int numberM, int numberN)
+{
+    int result = numberM;
+    if (numberM == numberN)
+        return 0;
+    else
+    {
+        numberM++;
+        result = numberM + SumOfSegment(numberM, numberN);
+        return result;
+    }
+}
+
+
+
